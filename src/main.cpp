@@ -4,6 +4,7 @@
 #include "pros/motors.hpp"
 #include "tasks/auton.h"
 #include "tasks/teleop.h"
+#include "subsystems.h"
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -12,8 +13,7 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+    subsystems_initialize();
 }
 
 /**

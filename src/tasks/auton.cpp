@@ -2,6 +2,7 @@
 #include "pros/misc.hpp"
 #include "pros/llemu.hpp"
 #include "tasks/auton.h"
+#include "subsystems.h"
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
