@@ -22,5 +22,14 @@ void opcontrol() {
     // Defines controller
     pros::Controller master(pros::E_CONTROLLER_MASTER);
 
-    
+    while (true) {
+        // Get input from controller
+        int forward = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        int turn = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+        // Drive the drivebase
+        drivebase->drive(forward, turn);
+
+        pros::delay(20);
+    }
 }
