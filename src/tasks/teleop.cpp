@@ -3,7 +3,11 @@
 #include "pros/misc.hpp"
 #include "tasks/teleop.h"
 #include "subsystems.h"
+#include "util/PID.h"
 
+void opcontrol_initialize() {
+    
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -24,8 +28,8 @@ void opcontrol() {
 
     while (true) {
         // Get input from controller
-        int forward = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int turn = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        int forward = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) * 12000.0 / 127.0;
+        int turn = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 12000.0 / 127.0;
 
         // Drive the drivebase
         drivebase->drive(forward, turn);

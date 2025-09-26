@@ -1,7 +1,4 @@
 #include "main.h"
-#include "pros/adi.h"
-#include "pros/adi.hpp"
-#include "pros/motors.hpp"
 #include "tasks/auton.h"
 #include "tasks/teleop.h"
 #include "subsystems.h"
@@ -14,6 +11,8 @@
  */
 void initialize() {
     subsystems_initialize();
+    autonomous_initialize();
+    opcontrol_initialize();
 }
 
 /**
@@ -33,5 +32,6 @@ void disabled() {}
  * starts.
  */
 void competition_initialize() {}
+
 
 
