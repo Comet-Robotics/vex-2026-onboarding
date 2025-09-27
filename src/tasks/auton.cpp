@@ -5,7 +5,8 @@
 #include "subsystems.h"
 #include "util/PID.h"
 
-void autonomous_initialize() {
+void autonomous_initialize()
+{
     drivebase->resetEncoders();
     drivebase->resetIMU();
     pros::lcd::clear();
@@ -23,25 +24,13 @@ void autonomous_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {
+void autonomous()
+{
     pros::lcd::initialize();
     pros::lcd::set_text(1, "Auton Control Initialized");
 
-    // PID drivePID(0.01); // Example PID constants
-    // int targetPosition = 1000; // Example target position
-    // while (true) {
-    //     double output = drivePID.calculate(targetPosition, drivebase->getEncoderPosition()) * 12000;
-    //     pros::lcd::set_text(2, "Output: " + std::to_string(output));
-    //     drivebase->drive(output, 0); // Drive forward with PID output
-    //     pros::delay(20);
-    // }
-
-    PID turnPID(0.01, 0);
-    int targetAngle = 180;
-    while (true) {
-        double output = turnPID.calculate(targetAngle, drivebase->getAngle()) * 12000;
-        pros::lcd::set_text(2, "Output: " + std::to_string(output));
-        drivebase->drive(0, output); // Turn with PID output
-        pros::delay(20);
-    }
+    drivebase->driveInches(24);
+    drivebase->turnAngle(180);
+    drivebase->driveInches(36);
+    drivebase->turnAngle(45);
 }
