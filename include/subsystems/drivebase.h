@@ -57,7 +57,7 @@ public:
             pros::lcd::set_text(2, "Output: " + std::to_string(output));
             drive(0, output); // Turn with PID output
 
-            if (abs(targetAngle - getAngle()) < 1)
+            if (std::abs(targetAngle - getAngle()) < 1)
             {
                 break;
             }
@@ -75,7 +75,7 @@ public:
             double output = drivePID.calculate(targetPos, getEncoderPosition()) * 12000;
             drive(output, 0);
 
-            if (abs(targetPos - getEncoderPosition() < 10))
+            if (abs(targetPos - getEncoderPosition()) < 10)
             {
                 break;
             }
